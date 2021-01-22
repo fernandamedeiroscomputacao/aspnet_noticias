@@ -1,0 +1,23 @@
+@model IEnumerable<Curso_ASP_Rotas.Models.Noticia>
+
+@{
+    ViewData["Title"] = "TodasAsNoticias";
+}
+
+<div>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.ActionLink(item.Titulo, "MostrarNoticia", "Home", new {
+                    @noticiaId = item.NoticiaId, 
+                    @categoria = item.Categoria.ToLower(), 
+                    @titulo = item.Titulo.ToLower()
+                }, null)
+
+                <em>@Html.DisplayFor(modelItem => item.Categoria)</em>
+                <b>@Html.DisplayFor(modelItem => item.Data)</b>
+            </li>
+        }
+    </ul>
+</div>
